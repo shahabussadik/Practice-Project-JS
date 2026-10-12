@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyGrid | Campus Knowledge, Shared</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="varsity.css">
+  <script src="varsity.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home">
+        <span class="brand-mark">N</span>
+        <span>Study<span class="brand-accent">GRID</span><small>Read, Share & Elevate Together</small></span>
+      </a>
+
+      <p class="workspace-label">WORKSPACE</p>
+
+      <nav class="side-nav">
+        <a class="nav-link active" href="#home" data-view="home">⌂ Overview</a>
+        <a class="nav-link" href="#library" data-view="library">▤ Notes library</a>
+        <a class="nav-link" href="#questions" data-view="questions">▧ Previous questions</a>
+        <a class="nav-link" href="#departments" data-view="departments">⌘ Departments</a>
+        <a class="nav-link" href="#profile" data-view="profile">◎ Student profiles</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <strong>Knowledge grows when shared.</strong>
+          <p>Have notes that helped you? Share them with other students.</p>
+          <button class="btn btn-light btn-full" id="sidebarUpload"> Share your notes</button>
+        </div>
+        <div class="sidebar-user">
+          <div class="avatar avatar-you">S</div>
+          <div class="user-copy">
+            <strong>Student account</strong>
+            <span>Campus contributor</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="mobileMenu">☰</button>
+        <div class="breadcrumb">
+          <span>Workspace</span> / <strong id="pageLabel">Overview</strong>
+        </div>
+        <div class="top-actions">
+          <label class="global-search">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Search notes...">
+          </label>
+          <button class="icon-button" id="notifications">♧</button>
+          <button class="avatar avatar-you" id="topProfile">S</button>
+        </div>
+      </header>
+
+      <section class="view active-view" id="view-home">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow">✦ YOUR CAMPUS, CONNECTED</div>
+            <h1>Good to see you, <span class="gradient-text">scholar.</span></h1>
+            <p class="page-subtitle">What are we learning today?</p>
+          </div>
+          <button class="btn btn-primary" id="heroUpload">＋ Upload notes</button>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-content">
+            <span class="hero-tag">THE STUDENT-POWERED LIBRARY</span>
+            <h2>Your notes could be<br><em>someone's breakthrough.</em></h2>
+            <p>Find what you need. Share what you know.<br>Make campus life easier for everyone.</p>
+            <button class="btn btn-white" id="exploreLibrary">Explore the library ↗</button>
+          </div>
+          <div class="hero-illustration">
+            <div class="floating-note note-back"></div>
+            <div class="floating-note note-front">
+              <span>LECTURE NOTES</span>
+              <h3>Chapter summary</h3>
+              <p>Definitions and important topics</p>
+              <p>Examples and explanations</p>
+              <p>Exam preparation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Notes shared</span>
+            <strong id="statNotes">128</strong>
+            <small>Campus resources</small>
+          </article>
+          <article class="stat-card">
+            <span>Previous questions</span>
+            <strong id="statQuestions">46</strong>
+            <small>Past examination papers</small>
+          </article>
+          <article class="stat-card">
+            <span>Departments</span>
+            <strong>06</strong>
+            <small>Explore your department</small>
+          </article>
+          <article class="stat-card">
+            <span>Contributors</span>
+            <strong>342</strong>
+            <small>Students sharing knowledge</small>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">FIND YOUR NEXT A-HA MOMENT</div>
+            <h2>Browse by department</h2>
+          </div>
+          <button class="text-button" data-open-view="departments">All departments →</button>
+        </div>
+
+        <div class="department-grid" id="homeDepartments">
+          <button class="department-card dept-cse" data-department="CSE">
+            <span class="dept-symbol">⌘</span>
+            <span class="dept-title">Computer Science</span>
+            <span class="dept-meta">CSE · Browse notes</span>
+          </button>
+          <button class="department-card dept-eee" data-department="EEE">
+            <span class="dept-symbol">ϟ</span>
+            <span class="dept-title">Electrical & Electronic</span>
+            <span class="dept-meta">EEE · Browse notes</span>
+          </button>
+          <button class="department-card dept-bba" data-department="BBA">
+            <span class="dept-symbol">↗</span>
+            <span class="dept-title">Business Administration</span>
+            <span class="dept-meta">BBA · Browse notes</span>
+          </button>
+          <button class="department-card dept-english" data-department="ENG">
+            <span class="dept-symbol">Aa</span>
+            <span class="dept-title">English</span>
+            <span class="dept-meta">ENG · Browse notes</span>
+          </button>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">FRESH FROM YOUR CAMPUS</div>
+            <h2>Recently shared notes</h2>
+          </div>
+          <button class="text-button" data-open-view="library">View all →</button>
+        </div>
+
+        <div class="content-panel">
+          <div class="panel-toolbar">
+            <strong>Latest uploads</strong>
+            <button class="filter-select" id="homeFilter">All departments⌄</button>
+          </div>
+          <div class="note-list" id="recentNotes"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-library">
+        <div class="view-heading">
+          <div>
+            <div class="eyebrow">YOUR SHARED KNOWLEDGE BASE</div>
+            <h1>Notes <span class="gradient-text">library.</span></h1>
+            <p class="page-subtitle">Find notes by department, semester and subject.</p>
+          </div>
+          <button class="btn btn-primary" id="libraryUpload">＋ Upload notes</button>
+        </div>
+
+        <div class="filter-bar">
+          <label class="filter-search">
+            <span>⌕</span>
+            <input type="search" id="librarySearch" placeholder="Search notes, subjects, contributors...">
+          </label>
+          <select id="departmentFilter">
+            <option value="">All departments</option>
+            <option>CSE</option><option>EEE</option><option>BBA</option>
+            <option>ENG</option><option>LAW</option><option>PHARM</option>
+          </select>
+          <select id="semesterFilter">
+            <option value="">All semesters</option>
+            <option value="1">1st semester</option>
+            <option value="2">2nd semester</option>
+            <option value="3">3rd semester</option>
+            <option value="4">4th semester</option>
+            <option value="5">5th semester</option>
+            <option value="6">6th semester</option>
+            <option value="7">7th semester</option>
+            <option value="8">8th semester</option>
+          </select>
+          <select id="typeFilter">
+            <option value="">All types</option>
+            <option>Lecture notes</option>
+            <option>Assignment</option>
+            <option>Lab report</option>
+            <option>Exam prep</option>
+          </select>
+        </div>
+
+        <p class="result-line" id="resultCount">Showing notes</p>
+        <div class="library-grid" id="libraryGrid"></div>
+
+        <div class="empty-state hidden" id="libraryEmpty">
+          <h3>No notes found</h3>
+          <p>Try changing the filters or upload a note.</p>
+          <button class="btn btn-primary" id="emptyUpload">＋ Upload a note</button>
+        </div>
+      </section>
+
+      <section class="view" id="view-questions">
+        <div class="view-heading">
+          <div>
+            <div class="eyebrow">PREPARE WITH PAST PAPERS</div>
+            <h1>Previous <span class="gradient-text">questions.</span></h1>
+            <p class="page-subtitle">Search previous questions by course, year and semester.</p>
+          </div>
+        </div>
+
+        <div class="question-hero">
+          <div class="question-hero-icon">▧</div>
+          <div>
+            <strong>Practice with purpose.</strong>
+            <p>Explore past exam papers to prepare for your upcoming exams.</p>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <label class="filter-search">
+            <span>⌕</span>
+            <input id="questionSearch" type="search" placeholder="Search subject or course code...">
+          </label>
+          <select id="questionDept">
+            <option value="">All departments</option>
+            <option>CSE</option><option>EEE</option><option>BBA</option>
+            <option>ENG</option><option>LAW</option><option>PHARM</option>
+          </select>
+          <select id="questionSemester">
+            <option value="">All semesters</option>
+            <option value="1">1st semester</option><option value="2">2nd semester</option>
+            <option value="3">3rd semester</option><option value="4">4th semester</option>
+            <option value="5">5th semester</option><option value="6">6th semester</option>
+            <option value="7">7th semester</option><option value="8">8th semester</option>
+          </select>
+        </div>
+
+        <div class="question-grid" id="questionGrid"></div>
+        <div class="empty-state hidden" id="questionEmpty">
+          <h3>No question papers found</h3>
+          <p>Try another department or semester.</p>
+        </div>
+      </section>
+
+      <section class="view" id="view-departments">
+        <div class="view-heading">
+          <div>
+            <div class="eyebrow">ONE CAMPUS, MANY DISCIPLINES</div>
+            <h1>Explore <span class="gradient-text">departments.</span></h1>
+            <p class="page-subtitle">Choose a department, semester and subject.</p>
+          </div>
+        </div>
+
+        <div class="department-full-grid" id="departmentFullGrid"></div>
+
+        <div class="semester-zone hidden" id="semesterZone">
+          <div class="zone-heading">
+            <div>
+              <div class="section-kicker">YOUR ACADEMIC ROADMAP</div>
+              <h2 id="zoneTitle">Semester zones</h2>
+              <p>Choose a semester to browse subjects.</p>
+            </div>
+            <button class="icon-button" id="closeZone">×</button>
+          </div>
+          <div class="semester-grid" id="semesterGrid"></div>
+          <div class="subject-zone hidden" id="subjectZone">
+            <h3 id="subjectZoneTitle">Subjects</h3>
+            <div class="subject-grid" id="subjectCards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-profile">
+        <div class="view-heading">
+          <div>
+            <div class="eyebrow">YOUR CAMPUS IDENTITY</div>
+            <h1>Student <span class="gradient-text">profiles.</span></h1>
+            <p class="page-subtitle">Meet students sharing knowledge across campus.</p>
+          </div>
+          <button class="btn btn-primary" id="editProfile">✎ Edit my profile</button>
+        </div>
+
+        <div class="profile-feature">
+          <div class="profile-cover">
+            <div class="profile-avatar-large" id="profileInitial">S</div>
+          </div>
+          <div class="profile-feature-info">
+            <div>
+              <h2 id="profileName">Student Contributor</h2>
+              <p id="profileBio">Learning something new every day.</p>
+              <div class="profile-tags">
+                <span id="profileDeptTag">CSE</span>
+                <span id="profileSemTag">3rd semester</span>
+                <span>Campus contributor</span>
+              </div>
+            </div>
+            <div class="profile-metrics">
+              <div><strong id="myUploads">0</strong><span>Uploads</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">LEARN TOGETHER</div>
+            <h2>Campus contributors</h2>
+          </div>
+        </div>
+        <div class="student-grid" id="studentGrid"></div>
+      </section>
+
+      <footer class="footer">
+        <a class="footer-brand" href="#home">notenest®</a>
+        <span>Made for students, powered by sharing.</span>
+        <span>HTML · CSS · JavaScript</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="uploadModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="section-kicker">CONTRIBUTE TO YOUR CAMPUS</div>
+          <h2>Share your notes</h2>
+          <p>Someone's next breakthrough might start here.</p>
+        </div>
+        <button class="icon-button" data-close="uploadModal">×</button>
+      </div>
+
+      <form id="uploadForm">
+        <div class="form-grid">
+          <label class="form-field full">
+            <span>Note title *</span>
+            <input name="title" required maxlength="90" placeholder="e.g. Data Structures — Linked Lists">
+          </label>
+
+          <label class="form-field">
+            <span>Department *</span>
+            <select name="department" required>
+              <option value="">Select department</option>
+              <option>CSE</option><option>EEE</option><option>BBA</option>
+              <option>ENG</option><option>LAW</option><option>PHARM</option>
+            </select>
+          </label>
+
+          <label class="form-field">
+            <span>Semester *</span>
+            <select name="semester" required>
+              <option value="">Select semester</option>
+              <option value="1">1st semester</option><option value="2">2nd semester</option>
+              <option value="3">3rd semester</option><option value="4">4th semester</option>
+              <option value="5">5th semester</option><option value="6">6th semester</option>
+              <option value="7">7th semester</option><option value="8">8th semester</option>
+            </select>
+          </label>
+
+          <label class="form-field">
+            <span>Subject *</span>
+            <input name="subject" required maxlength="70" placeholder="e.g. Data Structures">
+          </label>
+
+          <label class="form-field">
+            <span>Content type</span>
+            <select name="type">
+              <option>Lecture notes</option><option>Assignment</option>
+              <option>Lab report</option><option>Exam prep</option>
+            </select>
+          </label>
+
+          <label class="form-field full">
+            <span>Short description</span>
+            <textarea name="description" rows="3" maxlength="220" placeholder="What topics does this note cover?"></textarea>
+          </label>
+
+          <label class="form-field full">
+            <span>Attach a file (optional)</span>
+            <input type="file" name="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.jpg,.jpeg,.png">
+            <small>Demo mode: maximum file size 10 MB.</small>
+          </label>
+
+          <label class="form-field full">
+            <span>Your display name *</span>
+            <input name="author" id="uploadAuthor" required maxlength="50" value="Student Contributor">
+          </label>
+        </div>
+
+        <div class="form-note">ⓘ Only upload material you're allowed to share.</div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" data-close="uploadModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish note ↗</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="profileModal" role="dialog" aria-modal="true">
+    <div class="modal compact-modal">
+      <div class="modal-header">
+        <div>
+          <div class="section-kicker">MAKE IT YOURS</div>
+          <h2>Your student profile</h2>
+        </div>
+        <button class="icon-button" data-close="profileModal">×</button>
+      </div>
+
+      <form id="profileForm">
+        <label class="form-field">
+          <span>Display name *</span>
+          <input name="name" required maxlength="50" value="Student Contributor">
+        </label>
+
+        <div class="form-grid profile-form-grid">
+          <label class="form-field">
+            <span>Department</span>
+            <select name="department">
+              <option>CSE</option><option>EEE</option><option>BBA</option>
+              <option>ENG</option><option>LAW</option><option>PHARM</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Semester</span>
+            <select name="semester">
+              <option value="1">1st semester</option><option value="2">2nd semester</option>
+              <option value="3" selected>3rd semester</option><option value="4">4th semester</option>
+              <option value="5">5th semester</option><option value="6">6th semester</option>
+              <option value="7">7th semester</option><option value="8">8th semester</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Short bio</span>
+          <textarea name="bio" rows="3" maxlength="140">Learning something new every day.</textarea>
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" data-close="profileModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal" role="dialog" aria-modal="true">
+    <div class="modal compact-modal">
+      <div class="modal-header">
+        <div>
+          <div class="section-kicker">NOTENEST RESOURCE</div>
+          <h2 id="detailTitle">Resource details</h2>
+        </div>
+        <button class="icon-button" data-close="detailModal">×</button>
+      </div>
+      <div id="detailBody" class="detail-body"></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-close="detailModal">Close</button>
+        <a class="btn btn-primary hidden" id="downloadLink" href="#" download>Download file ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+</body>
+</html>
